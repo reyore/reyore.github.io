@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | YORE</title>
+  <title>Centos下安装chrome | YORE</title>
   <meta name="author" content="SKY">
   
-  <meta name="description" content="使用markdown写的第一篇个人博客
-一直想写博客，可惜的是都没有到“做”的步骤，或者说都没有坚持下来  
-记不清楚在哪里看到了“Github Pages”，静态博客，专注写作。于是抱着折腾的心态，开始这一段学习之路。  
-这一次希望自己能坚持下去，记录自己生活中有意义的事情，以及学习历程。">
+  <meta name="description" content="在windows下习惯了chrome，虚拟机里装了centos6.5。网上找到了资料：
+1.在/etc/yum.repos.d/google-chrome.repo  
+2.加入：  
+  [google-chrome]
+  name=google-chrome
+  baseurl=http://d">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Hello World"/>
+  <meta property="og:title" content="Centos下安装chrome"/>
   <meta property="og:site_name" content="YORE"/>
 
   
@@ -52,7 +54,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-12-29T03:21:34.000Z"><a href="/2013/12/29/hello-world/">12月 29 2013</a></time>
+        <time datetime="2013-12-29T14:11:00.000Z"><a href="/2013/12/29/Centos6.x下安装chrome/">12月 29 2013</a></time>
       
      
      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a></div>
@@ -61,11 +63,20 @@
     </header>
     <div class="entry">
       
-        <h2>使用markdown写的第一篇个人博客</h2>
-<p>一直想写博客，可惜的是都没有到“做”的步骤，或者说都没有坚持下来  </p>
-<p>记不清楚在哪里看到了“Github Pages”，静态博客，专注写作。<br>于是抱着折腾的心态，开始这一段学习之路。  </p>
-<p>这一次希望自己能坚持下去，记录自己生活中有意义的事情，以及学习历程。</p>
-<a id="more"></a>
+        <p>在windows下习惯了chrome，虚拟机里装了centos6.5。<br>网上找到了资料：</p>
+<pre><code><span class="number">1.</span>在/etc/yum<span class="preprocessor">.repos</span><span class="preprocessor">.d</span>/google-chrome<span class="preprocessor">.repo</span>  
+<span class="number">2.</span>加入：  
+  [google-chrome]
+  name=google-chrome
+  baseurl=http://dl<span class="preprocessor">.google</span><span class="preprocessor">.com</span>/linux/chrome/rpm/stable/$basearch
+  enable=<span class="number">1</span>  
+  gpgcheck=<span class="number">1</span>  
+  gpgkey=https://dl-ssl<span class="preprocessor">.google</span><span class="preprocessor">.com</span>/linux/linux_signing_key<span class="preprocessor">.pub</span>  
+<span class="number">3.</span>yum install google-chrome-stable  </code></pre>
+<p>照着做，结果出现<code>libstdc++.so.6(GLIBCXX_3.4.15)(64bit) ...</code>  </p>
+<p>网上查到原因：chrome linux开发人员说：“Centos/RHEL6 are unfortunately too old”。以上方法失败，继续查找:<br>    一条命令:<br>   <code>yum install http://people.centos.org/hughesjr/chromium/6/x86_64/RPMS/chromium-31.0.1650.63-1.e16.x86_64.rpm</code><br>    安装成功！<br>    关于版本选择：可以到<a href="http://people.centos.org/hughesjr/chromium/6/x86_64/RPMS/" target="_blank">http://people.centos.org/hughesjr/chromium/6/x86_64/RPMS/</a>  下选择相应的安装包<br>    目前有28版本和31版本</p>
+<pre><code>删除命令：yum remove <span class="filename">chromium.x86_64</code></pre>
+
       
     </div>
     <footer>
@@ -74,7 +85,7 @@
         
   
   <div class="tags">
-    <a href="/tags/default/">default</a>
+    <a href="/tags/Linux/">Linux</a>
   </div>
 
         

@@ -48,6 +48,49 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-12-29T14:11:00.000Z"><a href="/2013/12/29/Centos6.x下安装chrome/">12月 29 2013</a></time>
+      
+     
+     <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","t163"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","t163"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    </header>
+    <div class="entry">
+      
+        <p>在windows下习惯了chrome，虚拟机里装了centos6.5。<br>网上找到了资料：</p>
+<pre><code><span class="number">1.</span>在/etc/yum<span class="preprocessor">.repos</span><span class="preprocessor">.d</span>/google-chrome<span class="preprocessor">.repo</span>  
+<span class="number">2.</span>加入：  
+  [google-chrome]
+  name=google-chrome
+  baseurl=http://dl<span class="preprocessor">.google</span><span class="preprocessor">.com</span>/linux/chrome/rpm/stable/$basearch
+  enable=<span class="number">1</span>  
+  gpgcheck=<span class="number">1</span>  
+  gpgkey=https://dl-ssl<span class="preprocessor">.google</span><span class="preprocessor">.com</span>/linux/linux_signing_key<span class="preprocessor">.pub</span>  
+<span class="number">3.</span>yum install google-chrome-stable  </code></pre>
+<p>照着做，结果出现<code>libstdc++.so.6(GLIBCXX_3.4.15)(64bit) ...</code>  </p>
+<p>网上查到原因：chrome linux开发人员说：“Centos/RHEL6 are unfortunately too old”。以上方法失败，继续查找:<br>    一条命令:<br>   <code>yum install http://people.centos.org/hughesjr/chromium/6/x86_64/RPMS/chromium-31.0.1650.63-1.e16.x86_64.rpm</code><br>    安装成功！<br>    关于版本选择：可以到<a href="http://people.centos.org/hughesjr/chromium/6/x86_64/RPMS/" target="_blank">http://people.centos.org/hughesjr/chromium/6/x86_64/RPMS/</a>  下选择相应的安装包<br>    目前有28版本和31版本</p>
+<pre><code>删除命令：yum remove <span class="filename">chromium.x86_64</code></pre>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-12-29T11:35:00.000Z"><a href="/2013/12/29/FTP数字代码含义/">12月 29 2013</a></time>
       
      
@@ -172,6 +215,8 @@
   <ul class="entry">
   
     <li><a href="/tags/FTP/">FTP</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
   
     <li><a href="/tags/default/">default</a><small>1</small></li>
   
