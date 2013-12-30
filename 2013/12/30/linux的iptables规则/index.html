@@ -3,13 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>YORE</title>
+  <title>linux的iptables规则 | YORE</title>
   <meta name="author" content="SKY">
+  
+  <meta name="description" content="iptables 命令解释:
+iptables [AI链名] [-io 网络接口] [-p 协议] [-s 来源IP/网域] [-d 目标IP/网域] -j[ACCEPT DROP REJECT LOG]
+
+选项与参数:  
+    -AI链名 针对某链进行规则的 添加 或 累加
+        -">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="linux的iptables规则"/>
   <meta property="og:site_name" content="YORE"/>
 
   
@@ -41,52 +48,7 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-30T09:16:17.000Z"><a href="/2013/12/30/linux下iptables的外挂模块/">12月 30 2013</a></time>
-      
-     
-     <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","t163"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","t163"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-    </header>
-    <div class="entry">
-      
-        <p>网络服务是双向的.<br>当需要使用SSH服务(22端口)链接到远程主机<br>那么需要建立两条规则:<br>1. 本机的1024:65535到远程的22端口必须ACCEPT (OUTPUT链)<br>2. 远程主机的22端口到本机的1024:65535端口必须ACCEPT (INOUT链)</p>
-<p>“如果说能判断出某一个封包是刚刚发出去的响应,那么就ACCEPT”!,基于这种思路,等于一条规则控制一个流程,会省事很多</p>
-<p>外挂模块:</p>
-<pre><code><span class="comment">iptabls</span> <span class="literal">-</span><span class="comment">A</span> <span class="comment">INPUT</span> <span class="title">[</span><span class="literal">-</span><span class="comment">m</span> <span class="comment">state/mac</span>] <span class="title">[</span><span class="literal">-</span><span class="literal">-</span><span class="comment">state</span>]
-<span class="comment">选项与参数:</span>
-    <span class="literal">-</span><span class="comment">m:</span> <span class="comment">使用iptables的外挂模块</span>
-        <span class="comment">state:</span> <span class="comment">状态模块</span>
-        <span class="comment">mac:</span> <span class="comment">网卡硬件地址(hardware</span> <span class="comment">address)</span>
-    <span class="literal">-</span><span class="literal">-</span><span class="comment">state:</span> <span class="comment">封包的状态</span>
-        <span class="comment">INVALID:</span> <span class="comment">无效的包</span>,<span class="comment">例如数据破损的封包状态</span>
-        <span class="comment">ESTABLISHED:</span> <span class="comment">已经联机成功的联机状态</span>
-        <span class="comment">NEW:</span> <span class="comment">想要新建联机的封包状态</span>
-        <span class="comment">RELATED:</span> <span class="comment">标示跟发出的有关系</span>
-    <span class="literal">-</span><span class="literal">-</span><span class="comment">mac</span>-<span class="comment">source:</span> <span class="comment">来源主机的mac</code></pre>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
@@ -193,48 +155,6 @@
       
         
         
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-29T14:11:00.000Z"><a href="/2013/12/29/Centos6.x下安装chrome/">12月 29 2013</a></time>
-      
-     
-     <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","t163"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","t163"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-    </header>
-    <div class="entry">
-      
-        <p>在windows下习惯了chrome，虚拟机里装了centos6.5。<br>网上找到了资料：</p>
-<pre><code><span class="number">1.</span>在/etc/yum<span class="preprocessor">.repos</span><span class="preprocessor">.d</span>/google-chrome<span class="preprocessor">.repo</span>  
-<span class="number">2.</span>加入：  
-  [google-chrome]
-  name=google-chrome
-  baseurl=http://dl<span class="preprocessor">.google</span><span class="preprocessor">.com</span>/linux/chrome/rpm/stable/$basearch
-  enable=<span class="number">1</span>  
-  gpgcheck=<span class="number">1</span>  
-  gpgkey=https://dl-ssl<span class="preprocessor">.google</span><span class="preprocessor">.com</span>/linux/linux_signing_key<span class="preprocessor">.pub</span>  
-<span class="number">3.</span>yum install google-chrome-stable  </code></pre>
-<p>照着做，结果出现<code>libstdc++.so.6(GLIBCXX_3.4.15)(64bit) ...</code>  </p>
-<p>网上查到原因：chrome linux开发人员说：“Centos/RHEL6 are unfortunately too old”。以上方法失败，继续查找:<br>    一条命令:<br>   <code>yum install http://people.centos.org/hughesjr/chromium/6/x86_64/RPMS/chromium-31.0.1650.63-1.e16.x86_64.rpm</code><br>    安装成功！<br>    关于版本选择：可以到<a href="http://people.centos.org/hughesjr/chromium/6/x86_64/RPMS/" target="_blank">http://people.centos.org/hughesjr/chromium/6/x86_64/RPMS/</a>  下选择相应的安装包<br>    目前有28版本和31版本</p>
-<pre><code>删除命令：yum remove <span class="filename">chromium.x86_64</code></pre>
-
-      
-    </div>
-    <footer>
-      
-        
         
       
       <div class="clearfix"></div>
@@ -243,121 +163,23 @@
 </article>
 
 
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-29T11:35:00.000Z"><a href="/2013/12/29/FTP数字代码含义/">12月 29 2013</a></time>
-      
-     
-     <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","t163"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","t163"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-    </header>
-    <div class="entry">
-      
-        <h1>FTP 数字代码含义</h1>
-<pre><code>110   重新启动标记应答。  
-120   服务在多久时间内ready。  
-125   数据链路端口开启，准备传送。  
-150   文件状态正常，开启数据连接端口。  
-200   命令执行成功。  
-202   命令执行失败。  
-211   系统状态或是系统求助响应。  
-212   目录的状态。  
-213   文件的状态。  
-214   求助的讯息。  
-215   名称系统类型。  
-220   新的联机服务ready。  
-221   服务的控制连接端口关闭，可以注销。  
-225   数据连结开启，但无传输动作。  
-226   关闭数据连接端口，请求的文件操作成功。  
-227   进入passive mode。  
-230   使用者登入。  
-250   请求的文件操作完成。  
-257   显示目前的路径名称。  
-331   用户名称正确，需要密码。  
-332   登入时需要账号信息。  
-350   请求的操作需要进一部的命令。  
-421   无法提供服务，关闭控制连结。  
-425   无法开启数据链路。  
-426   关闭联机，终止传输。  
-450   请求的操作未执行。  
-451   命令终止:有本地的错误。  
-452   未执行命令:磁盘空间不足。  
-500   格式错误，无法识别命令。  
-501   参数语法错误。  
-502   命令执行失败。  
-503   命令顺序错误。  
-504   命令所接的参数不正确。  
-530   未登入。   
-532   储存文件需要账户登入。  
-550   未执行请求的操作。  
-551   请求的命令终止，类型未知。  
-552   请求的文件终止，储存位溢出。    
-553   未执行请求的的命令，名称不正确。</code></pre>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-29T03:21:34.000Z"><a href="/2013/12/29/hello-world/">12月 29 2013</a></time>
-      
-     
-     <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","t163"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","t163"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-    </header>
-    <div class="entry">
-      
-        <h2>使用markdown写的第一篇个人博客</h2>
-<p>一直想写博客，可惜的是都没有到“做”的步骤，或者说都没有坚持下来  </p>
-<p>记不清楚在哪里看到了“Github Pages”，静态博客，专注写作。<br>于是抱着折腾的心态，开始这一段学习之路。  </p>
-<p>这一次希望自己能坚持下去，记录自己生活中有意义的事情，以及学习历程。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/12/29/hello-world/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-<nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav></div></div>
+<section id="comment">
+  <!-- Duoshuo Comment BEGIN -->
+  <div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"timepast"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+</section>
+</div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">

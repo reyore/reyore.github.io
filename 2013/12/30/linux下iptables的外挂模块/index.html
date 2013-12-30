@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>linux下iptables的外挂模块 | YORE</title>
+  <meta name="author" content="SKY">
+  
+  <meta name="description" content="网络服务是双向的.当需要使用SSH服务(22端口)链接到远程主机那么需要建立两条规则:1. 本机的1024:65535到远程的22端口必须ACCEPT (OUTPUT链)2. 远程主机的22端口到本机的1024:65535端口必须ACCEPT (INOUT链)
+“如果说能判断出某一个封包是刚刚发出去">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="linux下iptables的外挂模块"/>
+  <meta property="og:site_name" content="YORE"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="YORE" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">YORE</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-30T09:16:17.000Z"><a href="/2013/12/30/linux下iptables的外挂模块/">12月 30 2013</a></time>
+      
+     
+     <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","t163"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","t163"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    </header>
+    <div class="entry">
+      
+        <p>网络服务是双向的.<br>当需要使用SSH服务(22端口)链接到远程主机<br>那么需要建立两条规则:<br>1. 本机的1024:65535到远程的22端口必须ACCEPT (OUTPUT链)<br>2. 远程主机的22端口到本机的1024:65535端口必须ACCEPT (INOUT链)</p>
+<p>“如果说能判断出某一个封包是刚刚发出去的响应,那么就ACCEPT”!,基于这种思路,等于一条规则控制一个流程,会省事很多</p>
+<p>外挂模块:</p>
+<pre><code><span class="comment">iptabls</span> <span class="literal">-</span><span class="comment">A</span> <span class="comment">INPUT</span> <span class="title">[</span><span class="literal">-</span><span class="comment">m</span> <span class="comment">state/mac</span>] <span class="title">[</span><span class="literal">-</span><span class="literal">-</span><span class="comment">state</span>]
+<span class="comment">选项与参数:</span>
+    <span class="literal">-</span><span class="comment">m:</span> <span class="comment">使用iptables的外挂模块</span>
+        <span class="comment">state:</span> <span class="comment">状态模块</span>
+        <span class="comment">mac:</span> <span class="comment">网卡硬件地址(hardware</span> <span class="comment">address)</span>
+    <span class="literal">-</span><span class="literal">-</span><span class="comment">state:</span> <span class="comment">封包的状态</span>
+        <span class="comment">INVALID:</span> <span class="comment">无效的包</span>,<span class="comment">例如数据破损的封包状态</span>
+        <span class="comment">ESTABLISHED:</span> <span class="comment">已经联机成功的联机状态</span>
+        <span class="comment">NEW:</span> <span class="comment">想要新建联机的封包状态</span>
+        <span class="comment">RELATED:</span> <span class="comment">标示跟发出的有关系</span>
+    <span class="literal">-</span><span class="literal">-</span><span class="comment">mac</span>-<span class="comment">source:</span> <span class="comment">来源主机的mac</code></pre>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <!-- Duoshuo Comment BEGIN -->
+  <div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"timepast"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yangqikai.cn">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/FTP/">FTP</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/tags/default/">default</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2013 SKY
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
